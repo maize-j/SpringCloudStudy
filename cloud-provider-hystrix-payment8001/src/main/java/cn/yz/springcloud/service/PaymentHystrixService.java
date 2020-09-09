@@ -70,7 +70,7 @@ public class PaymentHystrixService {
     })
     public String paymentCircuitBreaker(@PathVariable("id") Integer id){
         if(id < 0){
-            throw new RuntimeException("**********id不能为复数***********");
+            throw new RuntimeException("**********id不能为负数***********");
         }
         String serialNnmber = IdUtil.simpleUUID();
         return Thread.currentThread().getName()+"\t调用成功，流水号："+serialNnmber;
