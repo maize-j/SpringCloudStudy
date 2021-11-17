@@ -27,8 +27,9 @@ import java.util.List;
 @RestController
 @Slf4j
 public class OrderMainController {
-//    public static final String PAYMENT_URL = "http://localhost:8001";
-    public static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVCIE";
+//    RestTemplate远程调用的地址
+    public static final String PAYMENT_URL = "http://localhost:8001";
+//    public static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVCIE";
 
     @Autowired
     private LoadBalancer loadBalancer;
@@ -40,6 +41,7 @@ public class OrderMainController {
 
     @GetMapping("/consumer/payment/create")
     public CommonResult<Payment> create(Payment payment){
+        //url，调用地址携带的参数，返回值
         return restTemplate.postForObject(PAYMENT_URL+"/payment/create",payment,CommonResult.class);
     }
 

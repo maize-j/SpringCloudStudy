@@ -25,6 +25,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class PaymentController {
 
+    //爆红是因为dao用的mapper注解
     @Autowired
     private IPaymentService paymentService;
 

@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class ApplicationContextConfig {
 
+    //将RestTemplate对象注入到Spring容器中
     @Bean
 //    @LoadBalanced
     public RestTemplate getRestTemplate(){

@@ -17,7 +17,7 @@ spring:
 #mybatis
 mybatis:
   mapperLocations: classpath:mapper/*.xml
-  type-aliases-package: com.atguigu.springcloud.entities    # 所有Entity别名类所在包
+  type-aliases-package: cn.yz.springcloud.entities    # 所有Entity别名类所在包
 
 #Eureka
 eureka:

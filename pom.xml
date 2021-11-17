@@ -15,7 +15,7 @@
       <module>cloud-api-commons</module>
       <module>cloud-eureka-server7001</module>
       <module>cloud-eureka-server7002</module>
-    <module>cloud-provider-payment8002</module>
+	  <module>cloud-provider-payment8002</module>
       <module>cloud-provider-payment8004</module>
       <module>cloud-consumerzk-order80</module>
       <module>cloud-consumer-feign-order80</module>
@@ -119,3 +119,12 @@
   </build>
 
 </project>
+
+
+<!--
+建moudle
+改pom
+写yml
+主启动
+业务类
+-->
