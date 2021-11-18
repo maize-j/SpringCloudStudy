@@ -13,8 +13,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @date 2020/8/31 20:15
  */
 @SpringBootApplication
-//标记为EurekaClient
+//标记为EurekaClient，Eureka的客户端，服务提供方
 @EnableEurekaClient
+//开启服务发现
 @EnableDiscoveryClient
 public class PaymentMain8001 {
     public static void main(String[] args) {

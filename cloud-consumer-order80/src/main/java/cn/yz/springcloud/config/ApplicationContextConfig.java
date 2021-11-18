@@ -18,7 +18,8 @@ public class ApplicationContextConfig {
 
     //将RestTemplate对象注入到Spring容器中
     @Bean
-//    @LoadBalanced
+    //注册进eureka后，需要开启一个自动的负载均衡机制，赋予RestTemplate负载均衡的能力，否则服务不认识注册进eureka服务提供方的微服务名称CLOUD-PAYMENT-SERVICE
+    @LoadBalanced
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }

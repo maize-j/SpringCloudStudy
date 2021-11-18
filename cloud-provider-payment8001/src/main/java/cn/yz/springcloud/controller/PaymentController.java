@@ -11,6 +11,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -26,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 public class PaymentController {
 
     //爆红是因为dao用的mapper注解
-    @Autowired
+    @Resource
     private IPaymentService paymentService;
 
     @Value("${server.port}")
@@ -59,13 +60,13 @@ public class PaymentController {
 
     @GetMapping("/payment/discovery")
     public Object discovery(){
-        //获得服务列表信息
+        //获得服务列表信息，注册进Eureka的有哪些服务
         List<String> services = discoveryClient.getServices();
         for(String element:services){
             log.info("*********element:"+element+"*********");
         }
         //根据服务名称进一步获得服务相关信息
-        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVCIE");
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
         for(ServiceInstance instance:instances){
             log.info(instance.getServiceId()+"\t"+instance.getHost()+"\t"+instance.getPort()+"\t"+instance.getUri());
         }

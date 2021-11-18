@@ -13,7 +13,7 @@
     <artifactId>cloud-provider-payment8001</artifactId>
 
     <dependencies>
-        <!--Eureka依赖-->
+        <!--Eureka依赖，Eureka客户端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
