@@ -1,2 +1,2 @@
 # SpringCloudStudy
-SpringCloud联系笔记
+SpringCloud练习笔记
