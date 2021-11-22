@@ -22,13 +22,14 @@ public class PaymentHystrixService {
     //==============================服务降级================================
     /**
      *正常访问
-     *@author 苞谷洁子
+     * @author 苞谷洁子
      * @param id
      *@return 
      *@throws
      *@date 2020/9/7 12:07
      */
     public String paymentInfo_OK(Long id){
+        //hystrix用的是tomcat中的线程池
         return "线程池：   "+Thread.currentThread().getName()+"   paymentInfo_OK id: "+id+"\t哈哈";
     }
 
@@ -36,12 +37,14 @@ public class PaymentHystrixService {
      * 模拟出错
      *@author 苞谷洁子
      * @param id
+     * fallbackMethod 为降级的方法
      *@return 
      *@throws
      *@date 2020/9/7 12:09
      */
     @HystrixCommand(fallbackMethod = "paymentInfo_TimeOutHandler",commandProperties = {
-            //表明该线程的超时时间为三秒钟，而下面设置的休眠时间为5秒钟，一定会超时。
+            //定义了方法进入回调（fallback）方法的条件
+            //表明该线程的超时时间为3秒钟，而下面设置的休眠时间为5秒钟，一定会超时。
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
     })
     public String paymentInfo_TimeOut(Long id){
@@ -77,6 +80,6 @@ public class PaymentHystrixService {
     }
 
     public String paymentCircuitBreaker_fallback(@PathVariable("id") Integer id){
-        return "id不能为复数，请稍后再试，/(ㄒoㄒ)/~~    id:"+id;
+        return "id不能为负数，请稍后再试，/(ㄒoㄒ)/~~    id:"+id;
     }
 }

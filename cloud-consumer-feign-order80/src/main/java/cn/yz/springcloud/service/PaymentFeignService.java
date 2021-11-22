@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(value = "CLOUD-PAYMENT-SERVICE")
 public interface PaymentFeignService {
 
+    //调用CLOUD-PAYMENT-SERVICE服务下的/payment/getPaymentById/{id}，和方法名无关
     @GetMapping("/payment/getPaymentById/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id);
 

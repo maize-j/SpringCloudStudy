@@ -14,7 +14,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @SpringBootApplication
 @EnableEurekaClient
-//开启FeignClient
+//开启FeignClient，激活并开启
 @EnableFeignClients
 public class OrderOpenFeignMain80 {
     public static void main(String[] args) {

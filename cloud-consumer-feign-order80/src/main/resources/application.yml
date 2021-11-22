@@ -21,3 +21,5 @@ logging:
   level:
     #feign日志以什么级别监控哪个接口
     cn.yz.springcloud.service.PaymentFeignService: debug
+
+#openfeign整合了ribbon，因此openfeign具备负载均衡的能力

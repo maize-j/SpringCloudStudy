@@ -23,7 +23,8 @@ public class OrderFeignController {
     @Autowired
     private PaymentFeignService paymentFeignService;
 
-    @GetMapping("consumer/payment/get/{id}")
+    //对外的服务接口，调用本服务内部的service，而本服务的service会根据feginclient定义的服务名称和接口地址调用对应的接口
+    @GetMapping("/consumer/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id){
 
         return paymentFeignService.getPaymentById(id);
@@ -31,7 +32,7 @@ public class OrderFeignController {
 
     @GetMapping("/consumer/payment/feign/timeout")
     public String paymentFeignTimeOut(){
-        //openfeign-ribbon，客户端一般默认等待1分钟
+        //openfeign-ribbon，客户端一般默认等待1秒钟
         return paymentFeignService.paymentFeignTimeOut();
     }
 

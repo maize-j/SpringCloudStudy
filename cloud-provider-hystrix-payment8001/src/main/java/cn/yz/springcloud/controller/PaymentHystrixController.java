@@ -25,14 +25,17 @@ public class PaymentHystrixController {
     @Value("${server.port}")
     private String serverPort;
 
+//    static int n = 0;
+
 
     //======================服务降级=========================
     @GetMapping("/payment/hystrix/OK/{id}")
     public String paymentInfo_OK(@PathVariable("id") Long id){
+//        System.out.println("执行了" + n++ +"次");
         return paymentHystrixService.paymentInfo_OK(id);
     }
 
-    @GetMapping("/payment/hystrix/Timeout/{id}")
+    @GetMapping("/payment/hystrix/timeout/{id}")
     public String paymentInfo_TimeOut(@PathVariable("id") Long id){
         return paymentHystrixService.paymentInfo_TimeOut(id);
     }
