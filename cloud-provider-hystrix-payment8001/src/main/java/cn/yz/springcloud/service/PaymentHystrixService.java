@@ -67,14 +67,16 @@ public class PaymentHystrixService {
     //==============================服务熔断================================
     @HystrixCommand(fallbackMethod = "paymentCircuitBreaker_fallback",commandProperties = {
             @HystrixProperty(name = "circuitBreaker.enabled",value = "true"),//是否开启断路器
-            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "10"),//请求次数
-            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "10000"),//时间窗日期
-            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "60"),//失败率达到多少后跳闸
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "10"),//请求次数，时间窗日期内必须达到请求次数才有可能触发熔断
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "10000"),//时间窗日期，统计请求的时间范围位最近的10s
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "60"),//失败率达到多少后跳闸，在时间窗口期内，请求次数达到规定的请求次数，且错误率超过60%，将跳闸
     })
+    //断路器跳闸后，使用正确的id访问（id位为负数），也会进入回调方法
     public String paymentCircuitBreaker(@PathVariable("id") Integer id){
         if(id < 0){
             throw new RuntimeException("**********id不能为负数***********");
         }
+        //等价于UUID.random()
         String serialNnmber = IdUtil.simpleUUID();
         return Thread.currentThread().getName()+"\t调用成功，流水号："+serialNnmber;
     }
