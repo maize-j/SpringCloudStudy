@@ -5,12 +5,12 @@ spring:
     name: cloud-config-center  #注册进eureka服务器的微服务名
   cloud:
     config:
+      label: main #读取分支
       server:
         git:
           uri: https://github.com/maize-j/springcloud-config.git  #github上面的git仓库名字
           search-paths:
-            - springcloud-config  #搜索目录
-      label: master  #读取分支
+            - SpringCloudStudy/config  #搜索目录
 #服务注册到eureka地址
 eureka:
   client:

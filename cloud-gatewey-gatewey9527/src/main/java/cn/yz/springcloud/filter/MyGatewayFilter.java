@@ -1,6 +1,7 @@
 package cn.yz.springcloud.filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -32,6 +33,7 @@ public class MyGatewayFilter implements GlobalFilter, Ordered {
             exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);
             return exchange.getResponse().setComplete();
         }
+        log.info("放行了");
         //合法用户，去下一个过滤链
         return chain.filter(exchange);
     }
