@@ -12,6 +12,17 @@
     <artifactId>cloud-config-center3344</artifactId>
 
     <dependencies>
+        <!--消息总线 RabbitMq支持
+        这里采用的是由消息总线通知服务端，进而全局通知所有的客户端
+        不采用通知其中一个客户端，再由它去通知所有客户端的原因是：
+        1.需要保持客户端的业务单一性，不建议再给其添加别的任务
+        2.需要保护客户端的均衡性，让所有客户端承担的职责相同
+        添加了消息总线的支持后，对于修改配置客户端获取不到最新配置的问题，只需要在修改配置后刷新curl -X POST "http://localhost:3344/actuator/bus-refresh"，所有的客户端都会被刷新
+        只通知部分服务时curl -X POST "http://localhost:服务端口号/actuator/bus-refresh/{destinations}"，如curl -X POST "http://localhost:3344/actuator/bus-refresh/config-client:3355",config-client为微服务名称，3355为端口号-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>
         <!--configServer-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

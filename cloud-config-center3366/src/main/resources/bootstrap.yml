@@ -1,6 +1,6 @@
 # 使用bootstrap.yml是因为bootstrap是系统级别的，优先级更高，application.yml是用户级的资源配置项，bootstrap会更先加载
 server:
-  port: 3355
+  port: 3366
 spring:
   application:
     name: config-client

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-config-center3355</artifactId>
+    <artifactId>cloud-config-center3366</artifactId>
 
     <dependencies>
         <!--消息总线rabbitmq依赖-->
@@ -60,6 +60,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 
 </project>

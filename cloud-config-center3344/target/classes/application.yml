@@ -11,8 +11,23 @@ spring:
           uri: https://github.com/maize-j/SpringCloudStudy.git  #github上面的git仓库名字
           search-paths:
             - config  #搜索目录,https://github.com/maize-j/SpringCloudStudy.git地址下的config文件夹
+#rabbirmq支持
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
+
 #服务注册到eureka地址
 eureka:
   client:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka
+
+
+#rabbitmq相关配置，暴漏bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"
