@@ -1,5 +1,19 @@
 # SpringCloudStudy
-SpringCloud练习笔记
+这个项目是在学习练习中所用项目，很多技术已经进入停更维护状态，更新的技术在[SpringCloudAlibaba](https://github.com/maize-j/SpringCloudAlibaba.git)
+
+注册中心：Eureka
+
+负载均衡：LoadBalancer
+
+服务调用：openfeign
+
+服务网关：Gateway
+
+服务降级，熔断：hystrix
+
+配置中心：Config
+
+服务总线：Bus（以Rabbit演示）
 
 zookeeper和rabbitmq用docker安装和启动的
 ```$xslt
